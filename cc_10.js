@@ -29,3 +29,26 @@ const prod1 = new Product("Laptop", 101, 1200, 10);
 console.log(prod1.getDetails()); 
 prod1.updateStock(3);
 console.log(prod1.getDetails()); 
+
+//Task 2: Creating an Order Class
+
+//Create a Order class with properties
+class Order {
+    constructor(orderId, product, quantity) {
+        product.updateStock(quantity);
+        this.orderId = orderId;
+        this.product = product;
+        this.quantity = quantity;
+        this.totalPrice = product.price * quantity;
+    };
+
+//Add a method getOrderDetails() that returns order details
+    getOrderDetails() {
+        return `Order ID: ${this.orderId}, Product: ${this.product.name}, Quantity: ${this.quantity}, Total Price: $${this.totalPrice}`;
+    };
+};
+
+//Test Cases
+const order1 = new Order(501, prod1, 2);
+console.log(order1.getOrderDetails()); 
+console.log(prod1.getDetails()); 
