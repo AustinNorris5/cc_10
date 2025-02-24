@@ -24,7 +24,7 @@ class Product {
     };
 };
 
-//Test Cases
+//Test cases for task 1
 const prod1 = new Product("Laptop", 101, 1200, 10);
 console.log(prod1.getDetails()); 
 prod1.updateStock(3);
@@ -48,17 +48,18 @@ class Order {
     };
 };
 
-//Test Cases
+//Test cases for task 2
 const order1 = new Order(501, prod1, 2);
 console.log(order1.getOrderDetails()); 
 console.log(prod1.getDetails()); 
 
-//Task 3: Creating an Inventory Class
+//Task 3: Creating an Inventory Class & Task 4: Implementing Order Management
 
 //Create an Inventory class
 class Inventory {
     constructor() {
         this.products = [];
+        this.orders = []; //Add a orders array in the Inventory class
     };
 
 //Add methods: addProduct(product), listProducts()
@@ -69,9 +70,24 @@ class Inventory {
     listProducts() {
         this.products.forEach(product => console.log(product.getDetails()));
     };
+
+//Add methods: placeOrder, listOrders()
+    placeOrder(orderId, product, quantity) {
+        let order = new Order(orderId, product, quantity);
+        this.orders.push(order);
+    };
+
+    listOrders() {
+        this.orders.forEach(order => console.log(order.getOrderDetails()));
+    };
 };
 
-//Test cases
+//Test cases for task 3
 const inventory = new Inventory();
 inventory.addProduct(prod1);
 inventory.listProducts();
+
+//Test cases for task 4
+inventory.placeOrder(601, prod1, 2);
+inventory.listOrders();
+console.log(prod1.getDetails());
